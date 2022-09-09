@@ -1,0 +1,7 @@
+{
+	"TagCsvPath": ".\\sample_tags.csv",
+	"DesiredCsvPath": ".\\sample_desired.csv",
+	"ResGroupName": "MyTestResGroup",
+	"IoTHubName": "iot-dev-test-spike",
+	"DeviceName": "TestParentDevice"
+}

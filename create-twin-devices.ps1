@@ -2,7 +2,7 @@
 #Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 param ([bool] $addTags = $true,[bool] $addProps = $true, [bool] $createAll = $false)
 
-az login
+#az login
 Write-Output "Login sucessfully"
 
 <#
@@ -22,28 +22,23 @@ Use this to specify the path to the CSV containing the Tags import data.
 Use this to specify the path to the CSV containing the Desired properties import data.
 
 .EXAMPLE
-.\create-twin-devices.ps1
+.\create-twin-devices.ps1 -addTags 1 -addProps 0 -createAll 1
 #>
 
-$TagCsvPath = ".\sample_tags.csv";
-$DesiredCsvPath = ".\sample_desired.csv";
-
-$ResGroupName = "MyTestResGroup";
-$DeviceName = "TestParentDevice";
-$IoTHubName = "iot-dev-test-spike";
+$config = Get-Content ".\create-twin-devices.json" | ConvertFrom-Json
 
 if($createAll)
 {
 	#Creates a new Resource Group
-	az group create --name $ResGroupName --location eastus
-	Write-Output ("Created Resouce Group " + $ResGroupName)
+	az group create --name $config.ResGroupName --location eastus
+	Write-Output ("Created Resouce Group " + $config.ResGroupName)
 
 	#Creates an IoT Hub in the newly created resource group
-	az iot hub create --resource-group $ResGroupName --name $IoTHubName
-	Write-Output ("Created IoT Hub " + $IoTHubName)
+	az iot hub create --resource-group $config.ResGroupName --name $config.IoTHubName
+	Write-Output ("Created IoT Hub " + $config.IoTHubName)
 
 	#Creates a device that will serve as parent for the twin devices
-	Add-AzIotHubDevice -ResourceGroupName $ResGroupName  -IotHubName $IoTHubName -DeviceId $DeviceName -AuthMethod "shared_private_key" -EdgeEnabled
+	Add-AzIotHubDevice -ResourceGroupName $config.ResGroupName -IotHubName $config.IoTHubName -DeviceId $config.DeviceName -AuthMethod "shared_private_key" -EdgeEnabled
 	Write-Output ("Created Parent Device " + $DeviceName)
 }
 
@@ -51,7 +46,7 @@ Import-Csv -Path $TagCsvPath | ForEach {
 	if($createAll)
 	{
 		#Creates the twin Device
-		Add-AzIoTHubDevice -ResourceGroupName $ResGroupName -IoTHubName $IoTHubName -ParentDeviceId $DeviceName -DeviceId $_.TwinDeviceName -AuthMethod "shared_private_key"
+		Add-AzIoTHubDevice -ResourceGroupName $config.ResGroupName -IoTHubName $config.IoTHubName -ParentDeviceId $config.DeviceName -DeviceId $_.TwinDeviceName -AuthMethod "shared_private_key"
 		Write-Output ("Created Twin Device " + $_.TwinDeviceName)
 	}
 	
@@ -66,7 +61,7 @@ Import-Csv -Path $TagCsvPath | ForEach {
 		}
 		
 		#Creates/updates the tags for the twin device
-		Update-AzIotHubDeviceTwin -ResourceGroupName $ResGroupName -IotHubName $IoTHubName -DeviceId $_.TwinDeviceName -Tag $updatedTag
+		Update-AzIotHubDeviceTwin -ResourceGroupName $config.ResGroupName -IotHubName $config.IoTHubName -DeviceId $_.TwinDeviceName -Tag $updatedTag
 		Write-Output ("Added Tags to Twin Device " + $_.TwinDeviceName)
 	}
 }
@@ -85,7 +80,8 @@ if($addProps)
 		}
 		
 		#Creates/updates the desired properties for the twin device
-		Update-AzIotHubDeviceTwin -ResourceGroupName $ResGroupName -IotHubName $IoTHubName -DeviceId $_.TwinDeviceName -Desired $updatedDesired
+		Update-AzIotHubDeviceTwin -ResourceGroupName $config.ResGroupName -IotHubName $config.IoTHubName -DeviceId $_.TwinDeviceName -Desired $updatedDesired
 		Write-Output "Added Desired Properties to Twin Device " + $_.TwinDeviceName
 	}
 }
+#>
