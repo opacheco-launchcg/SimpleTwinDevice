@@ -1,0 +1,11 @@
+﻿TwinDeviceName,deviceStatus,friendlyName,siteFriendlyName,siteId
+TM001,Mocked,Tracker 001,Cedar Ridge,1
+TM002,Mocked,Tracker 002,Sharp County,3
+TM003,Mocked,Tracker 003,Sharp County,3
+TM004,Live,Tracker 004,Cedar Ridge,1
+TM005,Live,Tracker 005,Grand Canyon,2
+TM006,Mocked,Tracker 006,Grand Canyon,2
+TM007,Mocked,Tracker 007,Cedar Ridge,1
+TM008,Live,Tracker 008,Grand Canyon,2
+TM009,Live,Tracker 009,Sharp County,3
+TM010,Live,Tracker 010,Cedar Ridge,1
