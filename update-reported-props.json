@@ -1,0 +1,15 @@
+{
+	"connStrings": {
+		"LSM6DSM": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM001;SharedAccessKey=+7rP9SkUJ8TW0bOwN04vaojy45FGV8G1vkICO6bHdq0="
+	},
+	"colNames": {
+		"0" : "deviceName",
+		"1" : "date",
+		"2" : "time",
+		"3" : "current_angle",
+		"4" : "last_target_angle",
+		"5" : "last_move_angle",
+		"6" : "wind_speed",
+		"7" : "battery_charge"
+	}
+}
