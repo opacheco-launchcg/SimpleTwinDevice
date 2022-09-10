@@ -26,7 +26,7 @@ pip install azure-iot-device
 
 - To use the script, run cmd. Navigate to the folder containing the script and run  
 
-python update-reported-props <deviceName>
+python update-reported-props.py deviceName 
 
 -deviceName: The name of the device which will be updated. The connection string to this device must be specified in the json file
 
