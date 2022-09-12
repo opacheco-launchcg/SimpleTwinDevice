@@ -20,9 +20,10 @@ Python script to process telemetry data and send it as reported properties
 - Prerequisites: Install the following in your local computer  
 
 https://www.python.org/downloads/ - Python  
-Once Python is installed run the following command  
+Once Python is installed run the following commands  
 
 pip install azure-iot-device
+pip install pandas  
 
 - To use the script, run cmd. Navigate to the folder containing the script and run  
 

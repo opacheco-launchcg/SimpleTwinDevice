@@ -18,12 +18,10 @@ async def main():
     await device_client.connect()
 
     # open data telemetry file
-    reported_properties = {};
     with open('.\\sample_telemetry.csv', mode='r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             if row[0] == sys.argv[1]:
-                reported_properties = {};
                 for idx in data['colNames']:
                     reported_properties = {data['colNames'][idx] : row[int(idx)] }
 
