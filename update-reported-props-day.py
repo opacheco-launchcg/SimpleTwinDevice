@@ -13,11 +13,12 @@ async def main():
         data = json.load(json_data_file)
 
     # get connection string from config using device name as param
-    #conn_str = data['connStrings'][sys.argv[1]]
-    #device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
+    deviceId = data['deviceIds'][str(random.randint(0, 9))]
+    conn_str = data['connStrings'][deviceId]
+    device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 
     # connect the client.
-    #await device_client.connect()
+    await device_client.connect()
 
     # get the current time string in HH:MM:SS format
     current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -26,26 +27,18 @@ async def main():
     rows = pd.read_csv(".\\sample_telemetry_day.csv", low_memory=False)
 
     # filter rows using the current time HH:MM:SS
-    current_row = rows[rows['time']==current_time]
+    current_rows = rows[rows['time']==current_time]
 
     # get first row data
-    print(current_row.iloc[0])
-    
-    #with open('.\\sample_telemetry.csv', mode='r') as csv_file:
-    #    csv_reader = csv.reader(csv_file, delimiter=',')
-    #    for row in csv_reader:
-            
-            
-            
-            #if row[0] == sys.argv[1]:
-            #    for idx in data['colNames']:
-            #        reported_properties = {data['colNames'][idx] : row[int(idx)] }
+    current_row = current_rows.iloc[0]
+    reported_properties = {data['colNames']["3"] : current_row[3] }
 
-                    # update the reported properties
-            #        await device_client.patch_twin_reported_properties(reported_properties)
+    # update the reported properties
+    print("Sending property '" + data['colNames']["3"] + "' value '" + str(current_row[3]) + "' to twin device " + deviceId)
+    await device_client.patch_twin_reported_properties(reported_properties)
 
     # Finally, shut down the client
-    #await device_client.shutdown()
+    await device_client.shutdown()
 
 if __name__ == "__main__":
     asyncio.run(main())
