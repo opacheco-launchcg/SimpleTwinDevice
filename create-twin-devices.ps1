@@ -2,7 +2,7 @@
 #Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 param ([bool] $addTags = $true,[bool] $addProps = $true, [bool] $createAll = $false)
 
-#az login
+az login
 Write-Output "Login sucessfully"
 
 <#
@@ -42,7 +42,7 @@ if($createAll)
 	Write-Output ("Created Parent Device " + $DeviceName)
 }
 
-Import-Csv -Path $TagCsvPath | ForEach {
+Import-Csv -Path $config.TagCsvPath | ForEach {
 	if($createAll)
 	{
 		#Creates the twin Device
@@ -68,9 +68,11 @@ Import-Csv -Path $TagCsvPath | ForEach {
 
 if($addProps)
 {
-	Import-Csv -Path $DesiredCsvPath | ForEach {
-		
+	Import-Csv -Path $config.DesiredCsvPath | ForEach {
+	
 		$updatedDesired = @{};
+		$columns = $_.PSObject.Properties.Name.count - 1;
+		
 		for($num = 1; $num -le $columns; $num++)
 		{ 
 			if($_.PSObject.Properties.Value[$num]) 
@@ -81,7 +83,6 @@ if($addProps)
 		
 		#Creates/updates the desired properties for the twin device
 		Update-AzIotHubDeviceTwin -ResourceGroupName $config.ResGroupName -IotHubName $config.IoTHubName -DeviceId $_.TwinDeviceName -Desired $updatedDesired
-		Write-Output "Added Desired Properties to Twin Device " + $_.TwinDeviceName
+		Write-Output ("Added Desired Properties to Twin Device " + $_.TwinDeviceName)
 	}
 }
-#>
