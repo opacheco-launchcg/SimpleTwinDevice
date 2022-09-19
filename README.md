@@ -31,7 +31,7 @@ python update-reported-props.py deviceName
 
 -deviceName: The name of the device which will be updated. The connection string to this device must be specified in the json file
 
-#create-postgresql-script  
+# create-postgresql-script  
 SQL script to create the postgreSQL database schema  
 
 - Prerequisites: Install the following in your local computer  
@@ -47,3 +47,6 @@ This will connect to your db server and allow you to run SQL commands. Create a 
 
 CREATE DATABASE database_name;
 
+You can connect to the created database and run the schema script. Here's an example of how to create a connection to the Azure server
+
+![Connect to Azure](https://github.com/opacheco-launchcg/telemetry-scripts/blob/main/create-postgresql-script/pgadmin-connection.JPG)
