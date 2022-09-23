@@ -41,7 +41,7 @@ https://www.enterprisedb.com/downloads/postgres-postgresql-downloads - PostgreSQ
 Follow [this guide](https://docs.microsoft.com/en-us/azure/postgresql/single-server/tutorial-design-database-using-azure-portal) to create a PotgreSQL server in the desired IoT Hub  
 Once this is done, open a cmd window, go to the installation folder of postgreSQL and run the following:
 
-psql "host={your_servername}.postgres.database.azure.com port=5432 dbname={your_database} user={your_user} password={your_password} sslmode=require"  
+psql "host={your_servername}.postgres.database.azure.com port=5432 dbname=postgres user={your_user} password={your_password} sslmode=require"  
 
 This will connect to your db server and allow you to run SQL commands. Create a Database in your server using the following command:  
 

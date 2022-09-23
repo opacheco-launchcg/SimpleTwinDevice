@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS public."State"
 (
     "Id" uuid NOT NULL,
     "Name" character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    "ShortName" character(2) COLLATE pg_catalog."default" NOT NULL,
+    "Code" character(2) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "State_pkey" PRIMARY KEY ("Id")
 )
 
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS public."Country"
 (
     "Id" uuid NOT NULL,
     "Name" character varying(150) COLLATE pg_catalog."default" NOT NULL,
-    "ShortName" character varying(10) COLLATE pg_catalog."default",
+    "Code" character varying(10) COLLATE pg_catalog."default",
     CONSTRAINT "Country_pkey" PRIMARY KEY ("Id")
 )
 
