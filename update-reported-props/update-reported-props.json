@@ -1,27 +1,11 @@
 {
 	"deviceIds": {
-		"0": "TM001",
-		"1": "TM002",
-		"2": "TM003",
-		"3": "TM004",
-		"4": "TM005",
-		"5": "TM006",
-		"6": "TM007",
-		"7": "TM008",
-		"8": "TM009",
-		"9": "TM010"
+		"0": "T0001",
+		"1": "T0002"
 	},
 	"connStrings": {
-		"TM001": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM001;SharedAccessKey=+7rP9SkUJ8TW0bOwN04vaojy45FGV8G1vkICO6bHdq0=",
-		"TM002": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM002;SharedAccessKey=pBM0QB7iu/mwTeEVYzX47VB5xg5l3RSToYeMYHKB3QE=",
-		"TM003": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM003;SharedAccessKey=Ue0/eOqzvdaT/66hU5ENVF636zOEUJw4Tq6Oqa6L4d8=",
-		"TM004": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM004;SharedAccessKey=lk4/MG5DFclS7VF7FdMasNIOmUP4KTtzOjnKvrFYFLU=",
-		"TM005": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM005;SharedAccessKey=HyO3aQ6g9w2/iu/F/RU/oJxaLYFJMlSe7X+B+WaV+wg=",
-		"TM006": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM006;SharedAccessKey=znFLPMbHaybB1FWVvFYsoJZaT3AcmZ+wJ7aM5quffaQ=",
-		"TM007": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM007;SharedAccessKey=sE7Um2Cn/gHMwx+8JyiC/wZSSf2lFNNku34+C8MSSu8=",
-		"TM008": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM008;SharedAccessKey=EmnuKfz+bqlD65H3LApAI2+AUE02R8laPQ8+EjygfOg=",
-		"TM009": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM009;SharedAccessKey=Si3cJZ+KRbk3DDjczD5wK9zrme29oEVh+wraXISXc2E=",
-		"TM010": "HostName=iot-dev-test-spike.azure-devices.net;DeviceId=TM010;SharedAccessKey=nHK76/8t+LjfzggaiLG2Zq856k/pOGCJh/4JnINGlsw="
+		"T0001": "HostName=iot-dev-scus-spike-001.azure-devices.net;DeviceId=T0001;SharedAccessKey=VRZydgTn71d1OMw2PZV+kl2pjG1/HLhuP+bEfA/9BOA=",
+		"T0002": "HostName=iot-dev-scus-spike-001.azure-devices.net;DeviceId=T0002;SharedAccessKey=qHzY+naNN42Ri45tTTm6hI2hM6IesJWLmxohs7vFSKo="
 	},
 	"colNames": {
 		"0" : "deviceName",
