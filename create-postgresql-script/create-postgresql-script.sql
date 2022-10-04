@@ -133,9 +133,11 @@ CREATE TABLE IF NOT EXISTS public."Site"
 	"City" character varying(100) COLLATE pg_catalog."default" NOT NULL,
     "Address" character varying(250) COLLATE pg_catalog."default" NOT NULL,
     "Address2" character varying(250) COLLATE pg_catalog."default",
-    "Latittude" numeric,
+	"Zip" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+	"Timezone" character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    "Latitude" numeric,
     "Longitude" numeric,
-    "Comission" date,
+    "Commission" date,
     CONSTRAINT "Site_pkey" PRIMARY KEY ("Id"),
     CONSTRAINT "Country_fkey" FOREIGN KEY ("CountryId")
         REFERENCES public."Country" ("Id") MATCH SIMPLE
