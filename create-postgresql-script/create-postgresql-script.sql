@@ -98,10 +98,11 @@ CREATE TABLE IF NOT EXISTS public."User"
     "Email" character varying(250) COLLATE pg_catalog."default" NOT NULL,
     "Firstname" character varying(50) COLLATE pg_catalog."default" NOT NULL,
     "Lastname" character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    "CustomerId" uuid NOT NULL,
+    "CustomerId" uuid,
     "RoleId" uuid,
     CONSTRAINT "User_pkey" PRIMARY KEY ("Id"),
-    CONSTRAINT "Customer_fkey" FOREIGN KEY ("CustomerId")
+    CONSTRAINT "Customer_fkey" FOREIGN KEY ("CustomerId"),
+	CONSTRAINT "Email_unique" UNIQUE ("Email")
         REFERENCES public."Customer" ("Id") MATCH FULL
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
