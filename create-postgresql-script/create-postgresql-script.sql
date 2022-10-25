@@ -176,6 +176,8 @@ CREATE TABLE IF NOT EXISTS public."Tracker"
     "NetAddress" character varying(50) COLLATE pg_catalog."default",
     "SWVersion" character varying(25) COLLATE pg_catalog."default",
     "SiteId" uuid NOT NULL,
+	"Latitude" numeric,
+    "Longitude" numeric,
     CONSTRAINT "Tracker_pkey" PRIMARY KEY ("Id"),
     CONSTRAINT "Site_fkey" FOREIGN KEY ("SiteId")
         REFERENCES public."Site" ("Id") MATCH SIMPLE
